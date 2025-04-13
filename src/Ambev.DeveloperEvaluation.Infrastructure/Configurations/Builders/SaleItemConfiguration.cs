@@ -1,0 +1,68 @@
+﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Ambev.DeveloperEvaluation.Infrastructure.Configurations.Builders;
+
+[ExcludeFromCodeCoverage]
+public class SaleItemConfiguration : IEntityTypeConfiguration<SaleItem>
+{
+    public void Configure(EntityTypeBuilder<SaleItem> builder)
+    {
+        builder.ToTable("SaleItem");
+
+        builder.HasKey(si => si.Id);
+
+        builder.Property(si => si.ProductTitle)
+            .IsRequired()
+            .HasColumnType("varchar(150)");
+
+        builder.Property(si => si.Quantity)
+            .IsRequired();
+
+        builder.Property(si => si.UnitPrice)
+            .HasColumnType("decimal(10,2)")
+            .IsRequired();
+
+        builder.Property(si => si.Price)
+            .HasColumnType("decimal(10,2)")
+            .IsRequired();
+
+        builder.Property(si => si.Discount)
+            .HasColumnType("decimal(10,2)")
+            .IsRequired(false);
+
+        builder.Property(si => si.IsCancelled)
+            .IsRequired();
+
+        builder.Property(si => si.CancelledAt)
+            .HasColumnType("timestamptz")
+            .IsRequired(false);
+
+        builder.Property(si => si.Sequence)
+                .IsRequired();
+
+        builder.Property(si => si.CreatedAt)
+            .HasColumnType("timestamptz")
+            .ValueGeneratedOnAdd();
+
+        builder.Property(si => si.UpdatedAt)
+            .HasColumnType("timestamptz")
+            .ValueGeneratedOnUpdate();
+
+        builder.Property(si => si.IsDeleted)
+            .HasColumnType("boolean")
+            .HasDefaultValue(false);
+
+        builder.HasOne(si => si.Product)
+            .WithMany()
+            .HasForeignKey(si => si.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(si => si.Sale)
+            .WithMany(s => s.Items)
+            .HasForeignKey(si => si.SaleId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
+}
