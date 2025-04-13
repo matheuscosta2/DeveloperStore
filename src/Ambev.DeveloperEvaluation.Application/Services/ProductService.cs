@@ -6,6 +6,7 @@ using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Services;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
 
 namespace Ambev.DeveloperEvaluation.Application.Services;
 

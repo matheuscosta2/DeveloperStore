@@ -1,23 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Events\**" />
-    <Compile Remove="Repositories\**" />
-    <Compile Remove="ValueObjects\**" />
-    <EmbeddedResource Remove="Events\**" />
-    <EmbeddedResource Remove="Repositories\**" />
-    <EmbeddedResource Remove="ValueObjects\**" />
-    <None Remove="Events\**" />
-    <None Remove="Repositories\**" />
-    <None Remove="ValueObjects\**" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Events\**" />
+		<Compile Remove="Repositories\**" />
+		<Compile Remove="ValueObjects\**" />
+		<EmbeddedResource Remove="Events\**" />
+		<EmbeddedResource Remove="Repositories\**" />
+		<EmbeddedResource Remove="ValueObjects\**" />
+		<None Remove="Events\**" />
+		<None Remove="Repositories\**" />
+		<None Remove="ValueObjects\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.10.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.IQueryable.Extensions" Version="8.0.0" />
+		<PackageReference Include="FluentValidation" Version="11.10.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.3" />
+	</ItemGroup>
 
 </Project>

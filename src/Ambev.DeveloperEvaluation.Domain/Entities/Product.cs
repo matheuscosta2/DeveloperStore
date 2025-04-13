@@ -1,5 +1,6 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Base;
 using Ambev.DeveloperEvaluation.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
 

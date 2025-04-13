@@ -13,7 +13,7 @@ public static class ExceptionStatusCodes
             {typeof(EntityAlreadyDeletedException), HttpStatusCode.Conflict},
             {typeof(InvalidPaginationParametersException), HttpStatusCode.BadRequest},
             {typeof(ValidationException), HttpStatusCode.BadRequest},
-            {typeof(SaleAlreadyCanceledException), HttpStatusCode.Conflict},c
+            {typeof(SaleAlreadyCanceledException), HttpStatusCode.Conflict},
             {typeof(SaleItemAlreadyCanceledException), HttpStatusCode.Conflict},
             {typeof(ItemOutOfStockException), HttpStatusCode.Conflict},
             {typeof(ItemQuantityLimitExceededException), HttpStatusCode.Conflict},

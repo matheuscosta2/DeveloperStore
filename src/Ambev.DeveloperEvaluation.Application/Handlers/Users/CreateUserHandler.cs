@@ -1,10 +1,11 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Commands.Users;
+using Ambev.DeveloperEvaluation.Application.Mappers.Users;
 using Ambev.DeveloperEvaluation.Application.Results.Users;
 using Ambev.DeveloperEvaluation.Domain.Exceptions;
+using Ambev.DeveloperEvaluation.Domain.Interfaces.Common;
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace Ambev.DeveloperEvaluation.Application.Handlers.Users;
 

@@ -1,4 +1,5 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Commands.Users;
+using Ambev.DeveloperEvaluation.Application.Mappers.Users;
 using Ambev.DeveloperEvaluation.Application.Results.Users;
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using FluentValidation;

@@ -17,4 +17,4 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     public async Task<User?> GetActiveByEmailAsync(string email)
         => await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email &&
                                                            u.Status == UserStatus.Active);
-}f
+}
