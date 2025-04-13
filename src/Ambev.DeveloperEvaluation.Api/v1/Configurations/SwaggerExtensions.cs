@@ -11,8 +11,8 @@ public static class SwaggerExtension
             c.CustomSchemaIds(type => type.FullName);
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "123Vendas - API de Vendas",
-                Description = "Esta API permite o gerenciamento completo de vendas na plataforma 123Vendas, incluindo operações de cadastro, edição, consulta, exclusão e registro de eventos relacionados às vendas.",
+                Title = "DevceloperStore - API de Vendas",
+                Description = "Esta API permite o gerenciamento completo de vendas na plataforma DeveloperStore, incluindo operações de cadastro, edição, consulta, exclusão e registro de eventos relacionados às vendas.",
                 Version = "v1"
             });
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
