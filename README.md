@@ -56,6 +56,15 @@ Abaixo está o diagrama do banco de dados utilizado neste projeto:
 ![Diagrama_DB_DeveloperStore](https://github.com/user-attachments/assets/2bbb0886-3591-4ead-bed4-2d9dc7111b71)
 > **Nota:** Este diagrama representa a estrutura do banco e pode ser atualizado conforme necessário.
 
+No arquivo **PostgreDbContext**, o construtor garante que o banco de dados será criado automaticamente se ainda não existir:
+
+```csharp
+public PostgreDbContext(DbContextOptions<PostgreDbContext> options) : base(options)
+{
+    base.Database.EnsureCreated();
+}
+```
+
 ## Arquitetura de Eventos: Integração com RabbitMQ
 A aplicação integra-se ao **RabbitMQ** utilizando uma arquitetura de Pub/Sub, permitindo o processamento distribuído e independente dos eventos de vendas. A exchange **ex_sale** (tipo **direct**) possibilita que os consumidores criem filas customizadas e se vinculem às routing keys específicas dos eventos de seu interesse.
 
