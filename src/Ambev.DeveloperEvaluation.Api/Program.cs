@@ -46,29 +46,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Adicionando criação de usuário inicial
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var userRepository = services.GetRequiredService<IUserRepository>();
-    var passwordHasher = services.GetRequiredService<IPasswordHasher>();
-
-    var existingUser = await userRepository.GetActiveByEmailAsync("admin@admin.com");
-    if (existingUser == null)
-    {
-        var adminUser = new User
-        {
-            Email = "admin@admin.com",
-            Username = "admin",
-            Password = passwordHasher.HashPassword("Admin@123"),
-            Role = UserRole.Manager,
-            Status = UserStatus.Active,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow
-        };
-
-        await userRepository.AddAsync(adminUser);
-    }
-}
-
 app.Run();
