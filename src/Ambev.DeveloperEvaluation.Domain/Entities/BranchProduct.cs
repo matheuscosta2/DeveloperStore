@@ -1,8 +1,9 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Base;
 using Ambev.DeveloperEvaluation.Domain.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
-
+[ExcludeFromCodeCoverage]
 public class BranchProduct : BaseEntity
 {
     public int BranchId { get; set; }

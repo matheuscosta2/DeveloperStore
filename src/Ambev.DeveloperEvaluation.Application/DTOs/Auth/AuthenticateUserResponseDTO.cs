@@ -1,5 +1,8 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.Auth;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Auth;
+
+[ExcludeFromCodeCoverage]
 public record AuthenticateUserResponseDTO
 {
     public int Id { get; init; }

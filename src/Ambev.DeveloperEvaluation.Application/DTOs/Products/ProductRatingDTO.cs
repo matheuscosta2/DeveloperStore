@@ -1,5 +1,8 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.Products;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Products;
+
+[ExcludeFromCodeCoverage]
 public record ProductRatingDTO
 {
     public double? Rate { get; init; }

@@ -1,9 +1,11 @@
 ﻿using Ambev.DeveloperEvaluation.Application.DTOs.Common;
 using Ambev.DeveloperEvaluation.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Carts;
 
+[ExcludeFromCodeCoverage]
 public record CartGetRequestDTO : PagedRequestDTO
 {
     public int? Id { get; init; }

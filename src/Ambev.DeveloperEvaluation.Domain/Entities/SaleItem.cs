@@ -1,7 +1,9 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Base;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
 
+[ExcludeFromCodeCoverage]
 public class SaleItem : BaseEntity
 {
     public short Sequence { get; set; }

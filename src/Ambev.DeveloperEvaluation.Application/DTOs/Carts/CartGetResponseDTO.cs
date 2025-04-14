@@ -1,8 +1,10 @@
 ﻿using Ambev.DeveloperEvaluation.Application.DTOs.Common;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Carts;
 
+[ExcludeFromCodeCoverage]
 public record CartGetResponseDTO
 {
     public int Id { get; init; }

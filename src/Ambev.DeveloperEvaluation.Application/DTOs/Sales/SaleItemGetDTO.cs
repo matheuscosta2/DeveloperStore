@@ -1,5 +1,8 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.Sales;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Sales;
+
+[ExcludeFromCodeCoverage]
 public record SaleItemGetDTO
 {
     public short Sequence { get; init; }

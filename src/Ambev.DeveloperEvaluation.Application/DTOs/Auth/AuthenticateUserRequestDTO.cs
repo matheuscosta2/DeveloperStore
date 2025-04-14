@@ -1,5 +1,7 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.Auth;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Auth;
+[ExcludeFromCodeCoverage]
 public record AuthenticateUserRequestDTO
 {
     public string? Email { get; set; }

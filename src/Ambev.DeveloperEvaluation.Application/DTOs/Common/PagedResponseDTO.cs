@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Common;
 
+[ExcludeFromCodeCoverage]
 public record PagedResponseDTO<T> where T : class
 {
     public PagedResponseDTO(IEnumerable<T> data, int totalItems, int currentPage, int maxResult)

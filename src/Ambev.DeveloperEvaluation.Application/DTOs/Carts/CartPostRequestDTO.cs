@@ -1,5 +1,8 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.Carts;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Carts;
+
+[ExcludeFromCodeCoverage]
 public record CartPostRequestDTO
 {
     public int UserId { get; init; }

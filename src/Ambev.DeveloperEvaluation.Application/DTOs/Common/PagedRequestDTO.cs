@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Common;
 
+[ExcludeFromCodeCoverage]
 public record PagedRequestDTO
 {
     [FromQuery(Name = "_page")]

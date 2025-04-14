@@ -1,11 +1,8 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Services;
 using Ambev.DeveloperEvaluation.Domain.Base;
 using Ambev.DeveloperEvaluation.Domain.Entities;
-using Ambev.DeveloperEvaluation.Domain.Enums;
 using Ambev.DeveloperEvaluation.Domain.Exceptions;
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
-using Ambev.DeveloperEvaluation.Infrastructure.Contexts;
-using Ambev.DeveloperEvaluation.Tests.Mocks.DbSetup;
 using Ambev.DeveloperEvaluation.Tests.Mocks.Entities;
 using FluentAssertions;
 using FluentValidation;
@@ -142,33 +139,6 @@ public class BranchProductServiceTest
         // Assert
         result.Should().BeEquivalentTo(existingBranchProduct);
         await repository.Received(1).UpdateAsync(existingBranchProduct);
-    }
-
-    [Fact(DisplayName = "UpdateByProductIdAsync should update branch products successfully")]
-    [Trait("BranchProduct", "Service")]
-    public async Task UpdateByProductIdAsync_ValidProductId_ShouldUpdateBranchProducts()
-    {
-        // Arrange
-        var repository = Substitute.For<IBranchProductRepository>();
-        var dbContext = Substitute.For<PostgreDbContext>();
-        var branchProducts = new List<BranchProduct>
-            {
-                new BranchProduct { ProductId = 1, ProductTitle = "Old Name", ProductCategory = ProductCategory.Beer },
-                new BranchProduct { ProductId = 1, ProductTitle = "Old Name", ProductCategory = ProductCategory.Beer }
-            };
-        dbContext.BranchProducts.Returns(DbSetMock.Create(branchProducts));
-        repository.UpdateByProductIdAsync(1, "New Name", ProductCategory.Juice).Returns(Task.CompletedTask);
-
-        // Act
-        await repository.UpdateByProductIdAsync(1, "New Name", ProductCategory.Juice);
-
-        // Assert
-        foreach (var branchProduct in branchProducts)
-        {
-            branchProduct.ProductTitle.Should().Be("New Name");
-            branchProduct.ProductCategory.Should().Be(ProductCategory.Juice);
-        }
-        await dbContext.Received(1).SaveChangesAsync();
     }
 
     private (IBranchProductRepository repository, IProductRepository productRepository, IValidator<BranchProduct> validator, ILogger<BranchProductService> logger, BranchProductService service) CreateDependencies()

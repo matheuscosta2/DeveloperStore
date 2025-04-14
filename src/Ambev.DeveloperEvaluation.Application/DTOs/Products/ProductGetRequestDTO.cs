@@ -1,8 +1,10 @@
 ﻿using Ambev.DeveloperEvaluation.Application.DTOs.Common;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Products;
 
+[ExcludeFromCodeCoverage]
 public record ProductGetRequestDTO : PagedRequestDTO
 {
     public int? Id { get; init; }

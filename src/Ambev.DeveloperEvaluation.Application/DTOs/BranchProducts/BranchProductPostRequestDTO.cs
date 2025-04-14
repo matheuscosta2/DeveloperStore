@@ -1,5 +1,8 @@
-﻿namespace Ambev.DeveloperEvaluation.Application.DTOs.BranchProducts;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace Ambev.DeveloperEvaluation.Application.DTOs.BranchProducts;
+
+[ExcludeFromCodeCoverage]
 public record BranchProductPostRequestDTO
 {
     public int BranchId { get; init; }

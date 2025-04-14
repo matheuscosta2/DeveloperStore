@@ -1,7 +1,9 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Carts;
 
+[ExcludeFromCodeCoverage]
 public record CartGetDetailResponseDTO
 {
     public int Id { get; init; }

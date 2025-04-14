@@ -1,7 +1,9 @@
 ﻿using Ambev.DeveloperEvaluation.Application.DTOs.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Branches;
 
+[ExcludeFromCodeCoverage]
 public record BranchGetRequestDTO : PagedRequestDTO
 {
     public int? Id { get; init; }

@@ -1,8 +1,10 @@
 ﻿using Ambev.DeveloperEvaluation.Application.DTOs.Common;
 using Ambev.DeveloperEvaluation.Domain.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Application.DTOs.Sales;
 
+[ExcludeFromCodeCoverage]
 public record SaleGetRequestDTO : PagedRequestDTO
 {
     public int? Id { get; init; }

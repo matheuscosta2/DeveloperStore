@@ -1,9 +1,11 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Base;
 using Ambev.DeveloperEvaluation.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
 
+[ExcludeFromCodeCoverage]
 public class Product : BaseEntity
 {
     public string? Title { get; set; }
