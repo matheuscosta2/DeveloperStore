@@ -41,6 +41,10 @@ public class RabbitMQIntegration : IRabbitMQIntegration, IDisposable
         var basicProperties = _channel!.CreateBasicProperties();
         basicProperties.Persistent = true;
 
+        string queueName = routingKey;
+        _channel.QueueDeclare(queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
+        _channel.QueueBind(queueName, exchangeName, routingKey);
+
         for (int retry = 0; retry < 10; retry++)
         {
             try
