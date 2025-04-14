@@ -2,6 +2,7 @@
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using Ambev.DeveloperEvaluation.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
@@ -9,7 +10,7 @@ namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
 [ExcludeFromCodeCoverage]
 public class SaleRepository : BaseRepository<Sale>, ISaleRepository
 {
-    public SaleRepository(PostgreDbContext dbContext) : base(dbContext)
+    public SaleRepository(PostgreDbContext dbContext, ILogger<SaleRepository> logger) : base(dbContext, logger)
     {
     }
 

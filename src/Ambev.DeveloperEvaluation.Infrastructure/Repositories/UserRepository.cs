@@ -3,6 +3,7 @@ using Ambev.DeveloperEvaluation.Domain.Enums;
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using Ambev.DeveloperEvaluation.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
@@ -10,7 +11,7 @@ namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
 [ExcludeFromCodeCoverage]
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    public UserRepository(PostgreDbContext dbContext) : base(dbContext)
+    public UserRepository(PostgreDbContext dbContext, ILogger<UserRepository> logger) : base(dbContext, logger)
     {
     }
 

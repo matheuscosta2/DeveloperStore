@@ -2,6 +2,7 @@
 using Ambev.DeveloperEvaluation.Domain.Interfaces.Repositories;
 using Ambev.DeveloperEvaluation.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
@@ -9,7 +10,7 @@ namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
 [ExcludeFromCodeCoverage]
 public class CartRepository : BaseRepository<Cart>, ICartRepository
 {
-    public CartRepository(PostgreDbContext dbContext) : base(dbContext)
+    public CartRepository(PostgreDbContext dbContext, ILogger<CartRepository> logger) : base(dbContext, logger)
     {
     }
 

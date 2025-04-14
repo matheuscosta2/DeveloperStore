@@ -4,6 +4,7 @@ using Ambev.DeveloperEvaluation.Domain.Exceptions;
 using Ambev.DeveloperEvaluation.Infrastructure.Contexts;
 using Ambev.DeveloperEvaluation.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
@@ -13,10 +14,12 @@ namespace Ambev.DeveloperEvaluation.Infrastructure.Repositories;
 public abstract class BaseRepository<T> : IBaseRepository<T> where T : class, IBaseEntity
 {
     protected readonly PostgreDbContext _dbContext;
+    private readonly ILogger<BaseRepository<T>> _logger;
 
-    public BaseRepository(PostgreDbContext dbContext)
+    public BaseRepository(PostgreDbContext dbContext, ILogger<BaseRepository<T>> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     public async Task<PagedResult<T>> GetAsync(int page = 1,
@@ -48,10 +51,19 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class, IB
 
     public async Task<T> AddAsync(T entity)
     {
-        await _dbContext.Set<T>().AddAsync(entity);
-        await _dbContext.SaveChangesAsync();
-
-        return entity;
+        try
+        {
+            _logger.LogInformation("Adding a new entity of type {EntityType}", typeof(T).Name);
+            await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+            _logger.LogInformation("Entity of type {EntityType} added successfully with ID {EntityId}", typeof(T).Name, entity.Id);
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while adding an entity of type {EntityType}", typeof(T).Name);
+            throw;
+        }
     }
 
     public async Task DeleteAsync(T entity)

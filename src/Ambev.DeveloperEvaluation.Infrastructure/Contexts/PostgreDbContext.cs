@@ -1,4 +1,5 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Base.Interfaces;
+﻿using Ambev.DeveloperEvaluation.Domain.Base;
+using Ambev.DeveloperEvaluation.Domain.Base.Interfaces;
 using Ambev.DeveloperEvaluation.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
@@ -27,6 +28,23 @@ public class PostgreDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         EnsureIsNotDeletedFilter(builder);
+
+        foreach (var entityType in builder.Model.GetEntityTypes())
+        {
+            var clrType = entityType.ClrType;
+            if (typeof(IBaseEntity).IsAssignableFrom(clrType))
+            {
+                builder.Entity(clrType).HasKey(nameof(BaseEntity.Id));
+            }
+        }
+
+        builder.Entity<User>()
+    .OwnsOne(u => u.Name);
+        builder.Entity<User>()
+            .OwnsOne(u => u.Address, a =>
+            {
+                a.OwnsOne(ad => ad.Geolocation);
+            });
 
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

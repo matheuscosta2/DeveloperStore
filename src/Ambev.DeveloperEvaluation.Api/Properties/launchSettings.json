@@ -10,11 +10,11 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "JWT_SECRETKEY": "dR8!v9Kp@zL3xWq#N5gT7mYb$FcJ2sV0",
-        "POSTGRES_CONNECTION_STRING": "",
-        "RABBITMQ_HOSTNAME": "",
-        "RABBITMQ_USERNAME": "",
-        "RABBITMQ_VIRTUALHOST": "",
-        "RABBITMQ_PASSWORD": ""
+        "POSTGRES_CONNECTION_STRING": "Host=localhost;Database=DeveloperStore;Username=DeveloperStore;Password=DeveloperStore",
+        "RABBITMQ_HOSTNAME": "ambev_developer_evaluation_rabbitmq",
+        "RABBITMQ_USERNAME": "DeveloperStore",
+        "RABBITMQ_VIRTUALHOST": "/",
+        "RABBITMQ_PASSWORD": "DeveloperStore"
       }
     }
   }

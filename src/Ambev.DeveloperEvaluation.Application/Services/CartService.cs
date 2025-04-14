@@ -31,12 +31,24 @@ public class CartService : ICartService
     {
         try
         {
+            _logger.LogInformation("Creating a new cart for user {UserId} on {Date}", request.UserId, request.Date);
+
             await ValidateCartAsync(request);
 
-            return await _repository.AddAsync(request);
+            var createdCart = await _repository.AddAsync(request);
+
+            _logger.LogInformation("Cart created successfully with ID {CartId}", createdCart.Id);
+
+            return createdCart;
         }
-        catch (Exception ex) when (ex is not ValidationException)
+        catch (ValidationException ex)
         {
+            _logger.LogWarning("Validation failed for cart: {Errors}", ex.Errors);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while creating a cart.");
             throw new ServiceException("An error occurred while creating a cart.", ex);
         }
     }
