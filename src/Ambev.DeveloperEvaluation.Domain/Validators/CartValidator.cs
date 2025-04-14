@@ -1,0 +1,25 @@
+﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+using FluentValidation;
+
+namespace Ambev.DeveloperEvaluation.Domain.Validators;
+
+public class CartValidator : AbstractValidator<Cart>
+{
+    public CartValidator()
+    {
+        RuleFor(c => c.UserId)
+            .GreaterThan(0)
+            .WithMessage("UserId must have a value.");
+
+        RuleFor(c => c.Date)
+            .LessThanOrEqualTo(DateTimeOffset.Now)
+            .WithMessage("Date cannot be in the future.");
+
+        RuleFor(c => c.Products)
+            .NotEmpty()
+            .WithMessage("The cart must contain at least one product.");
+
+        RuleForEach(cart => cart.Products)
+            .SetValidator(new CartProductValidator());
+    }
+}

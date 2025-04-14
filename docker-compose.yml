@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: ambev_developer_evaluation_database
+    environment:
+      POSTGRES_DB: DeveloperStore
+      POSTGRES_USER: DeveloperStore
+      POSTGRES_PASSWORD: DeveloperStore
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ambev_developer_evaluation_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: DeveloperStore
+      RABBITMQ_DEFAULT_PASS: DeveloperStore
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  postgres_data:

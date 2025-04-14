@@ -1,0 +1,13 @@
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Branches;
+
+[ExcludeFromCodeCoverage]
+public record BranchPutRequestDTO
+{
+    public int Id { get; init; }
+    public string? Name { get; init; }
+    public string? Address { get; init; }
+    public string? Phone { get; init; }
+    public bool IsActive { get; init; }
+}

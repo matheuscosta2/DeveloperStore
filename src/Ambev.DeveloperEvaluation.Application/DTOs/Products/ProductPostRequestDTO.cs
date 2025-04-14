@@ -1,0 +1,17 @@
+﻿using Ambev.DeveloperEvaluation.Domain.Enums;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Ambev.DeveloperEvaluation.Application.DTOs.Products;
+
+[ExcludeFromCodeCoverage]
+public record ProductPostRequestDTO
+{
+    public string? Title { get; init; }
+    public string? Description { get; init; }
+    public ProductCategory Category { get; init; }
+    public decimal Price { get; init; }
+    public string? Image { get; init; }
+    public double Rating { get; init; }
+    public int RateCount { get; init; }
+    public bool IsActive { get; init; }
+}
